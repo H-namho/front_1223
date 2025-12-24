@@ -5,7 +5,7 @@ const boardList = document.getElementById("board-list");
 const getList = async () => {
     // axios문법 
     let res = await axios.get("/api/board/list");
-    // let res = await axios.get("http://localhost:8081/list");
+    // let res = await axios.get("http://localhost:8081/api/board/list");
     console.log(res.data);
     
     let boards = res.data; // 서버에서 받아온 데이터
@@ -22,10 +22,12 @@ const getList = async () => {
                 <td>${boards[i].b_idx}</td>
                 <td>${boards[i].b_title}</td>
                 <td>${boards[i].b_writer}</td>
-                <td>${boards[i].b_datatime}</td>
-                <td><${boards[i].b_count}/td>
+                <td>${boards[i].b_datetime}</td>
+                <td>${boards[i].b_count}</td>
             </tr>`
     }
     // table 태그에 게시글 데이터(HTML포함)를 출력하겠다!
     boardList.innerHTML = resultHTML;
 }
+
+getList();
